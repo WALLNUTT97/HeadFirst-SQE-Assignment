@@ -231,7 +231,7 @@ Given more time, I would improve the suite by adding:
 * invalid address and invalid payment tests
 * API schema validation for key responses
 * stronger cleanup of generated test data
-* additional UI smoke coverage using stable `data-testid` selectors
+* additional UI smoke coverage using stable `data-testid` selectors, a `data-testid` was implemented, but as the assignment stated an API approach, I decided to not use it
 * test tagging such as `@smoke`, `@api`, and `@checkout`
 * CI reporting with screenshots, videos, and JUnit/XML output
 * broader coverage around coupons, delivery options, and payment validation
