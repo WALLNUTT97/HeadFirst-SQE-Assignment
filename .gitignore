@@ -67,3 +67,7 @@ config/*.yml
 
 # System Files
 .DS_Store
+
+# Generated test analyzer reports
+skills/test-analyzer/test-analysis-report.md
+skills/test-analyzer/test-analysis-report.json

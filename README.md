@@ -159,7 +159,15 @@ The goal of this skill is to help understand:
 * what areas they cover
 * how the suite could be improved
 
-The design is intentionally lightweight. Instead of sending the full repository to an AI tool, the skill produces a compact test summary first. This helps reduce token usage, improve performance, and avoid relying on AI to guess deterministic values such as test counts.
+This skill is intentionally lightweight. It does not attempt to replace a QE review or build a full AI agent. Instead, it generates a deterministic summary of the Cypress suite first, including test counts, test names, support files, fixtures, and inferred coverage areas.
+
+This summary can then be used by a reviewer or supplied to an AI assistant as focused context. This reduces token usage, improves performance, and avoids relying on AI to guess values that can be calculated directly from the repository.
+
+## Running the skill
+
+```bash
+npm run analyze:test
+```
 
 ## Part 3: Striive Test Plan
 
