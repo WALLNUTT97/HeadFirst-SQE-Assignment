@@ -1,4 +1,4 @@
- export const addItemToBasket = (productId: number, authToken: string, quantity: number, basketId: number) => {
+ export const addItemToBasket = (productId: number, authToken: string, quantity: number, basketId: number): Cypress.Chainable<Cypress.Response<any>> => {
     return cy.request({
       method: 'POST',
       url: '/api/BasketItems/',
@@ -14,7 +14,7 @@
     })
  }
 
-  export const removeItemFromBasket = (productId: number, authToken: string) => {
+  export const removeItemFromBasket = (productId: number, authToken: string): Cypress.Chainable<Cypress.Response<any>> => {
     return cy.request({
       method: 'DELETE',
       url: `/api/BasketItems/${productId}`,
@@ -25,7 +25,7 @@
     })
  }
 
- /*export const getBasketItems = (authToken: string, basketId: number) => {
+ /*export const getBasketItems = (authToken: string, basketId: number): Cypress.Chainable<Cypress.Response<any>> => {
     return cy.request({
         method: 'GET',
         url: `/api/BasketItems?filter={"where":{"BasketId":${basketId}}`,
@@ -35,7 +35,7 @@
     })
  } */
 
- export const updateBasketItemQuantity = (basketItemId: number, authToken: string, quantity: number) => {
+ export const updateBasketItemQuantity = (basketItemId: number, authToken: string, quantity: number): Cypress.Chainable<Cypress.Response<any>> => {
     return cy.request({
         method: 'PUT',
         url: `/api/BasketItems/${basketItemId}`,
@@ -47,3 +47,22 @@
         }
     })
  }
+
+ export const getProducts = (): Cypress.Chainable<Cypress.Response<any>> => {
+  return cy.request({
+    method: 'GET',
+    url: '/rest/products/search?q=',
+    failOnStatusCode: false
+  })
+}
+
+export const reviewBasket = (basketId: number, authToken: string,): Cypress.Chainable<Cypress.Response<any>> => {
+  return cy.request({
+    method: "GET",
+    url: `/rest/basket/${basketId}`,
+    headers: {
+      Authorization: `Bearer ${authToken}`,
+    },
+    failOnStatusCode: false,
+  });
+};

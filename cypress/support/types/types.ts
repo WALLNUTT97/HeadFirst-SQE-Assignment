@@ -10,3 +10,20 @@ export interface RegisteredUser {
   token: string
   basketId: number
 }
+
+export interface CheckoutAddress {
+  country: string, 
+  fullName: string, 
+  mobileNumber: string, 
+  zipCode: string, 
+  streetAddress: string, 
+  city: string, 
+  state?: string
+}
+
+export interface PaymentOption {
+  fullName: string
+  cardNum: string
+  expMonth: string
+  expYear: string
+}
