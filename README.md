@@ -168,7 +168,7 @@ This summary can then be used by a reviewer or supplied to an AI assistant as fo
 ## Running the skill
 
 ```bash
-npm run analyze:test
+npm run analyze:tests
 ```
 
 ## Part 3: Striive Test Plan
