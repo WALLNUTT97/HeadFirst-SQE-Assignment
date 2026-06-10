@@ -15,15 +15,14 @@ import {
 import { trackOrder } from "cypress/support/api/orderInteractions";
 import { CheckoutAddress, PaymentOption } from "cypress/support/types/types";
 
-let addedBasketItems: any[] = [];
-const deliveryOption = [1, 2, 3]; //1, One day delivery, 2 fast delivery, 3 standard delivery
-let addressId: number;
-let deliveryMethodId: number;
-let paymentId: number;
-let trackingNumber: string;
-
 describe("API checkout flow", () => {
-  it("1. Seed and Login new user", () => {
+  it("allows a registered user to complete an API-driven checkout flow", () => {
+    let addedBasketItems: any[] = [];
+    const deliveryOption = [1, 2, 3]; //1, One day delivery, 2 fast delivery, 3 standard delivery
+    let addressId: number;
+    let deliveryMethodId: number;
+    let paymentId: number;
+    let trackingNumber: string;
     seedAndLoginUser().then((user) => {
       expect(user.token).to.be.a("string");
       expect(user.basketId).to.be.a("number");
@@ -47,16 +46,6 @@ describe("API checkout flow", () => {
             addedBasketItems.push(response.body.data);
           });
         }
-        /* I would have liked to use something like this, but Juice Shop is not a stable environment, and its APIs are not stable
-      There is no API to GET basket by basketID and list basket contents, which I would have liked to
-      use as a way to check the remove function worked properly.
-      getBasketItems(user.token, user.basketId).then((response) => {
-      cy.log(JSON.stringify(response.body))
-      expect(response.status).to.be.oneOf([200, 201])
-      expect(response.body.data).to.have.length(5); 
-
-      const basketItems = response.body.data
-      const itemToRemove = basketItems[1] */
 
         cy.then(() => {
           expect(addedBasketItems).to.have.length(5);
@@ -169,43 +158,15 @@ describe("API checkout flow", () => {
           });
         });
         cy.then(() => {
-          return trackOrder(trackingNumber, user.token).then((trackingResponse) => {
-            cy.log(JSON.stringify(trackingResponse.body));
-            expect(trackingResponse.status).to.be.oneOf([200, 201]);
-            expect(trackingResponse.body.data).to.exist;
-          })
-        })
+          return trackOrder(trackingNumber, user.token).then(
+            (trackingResponse) => {
+              cy.log(JSON.stringify(trackingResponse.body));
+              expect(trackingResponse.status).to.be.oneOf([200, 201]);
+              expect(trackingResponse.body.data).to.exist;
+            },
+          );
+        });
       });
     });
   });
 });
-/*
-
-  it('6. Checkout cart', () => {
-
-  })
-
-  it('7. Add a valid RO address', () => {
-
-  })
-
-  it('8. Select a delivery method', () => {
-
-  })
-
-  it('9. Add a valid RO payment option', () => {
-
-  })
-
-  it('10. Review summary', () => {
-
-  })
-
-  it('11. Place Order', () => {
-
-  })
-
-  it('12. Validate order success', () => {
-
-  })
-})*/

@@ -14,10 +14,10 @@
     })
  }
 
-  export const removeItemFromBasket = (productId: number, authToken: string): Cypress.Chainable<Cypress.Response<any>> => {
+  export const removeItemFromBasket = (basketItemId: number, authToken: string): Cypress.Chainable<Cypress.Response<any>> => {
     return cy.request({
       method: 'DELETE',
-      url: `/api/BasketItems/${productId}`,
+      url: `/api/BasketItems/${basketItemId}`,
       headers: {
         Authorization: `Bearer ${authToken}`
       },

@@ -15,7 +15,7 @@ export const addAddress = (address: CheckoutAddress, authToken: string): Cypress
 export const selectDelivery = (deliveryOption: number, authToken: string): Cypress.Chainable<Cypress.Response<any>> => {
     return cy.request({
         method: 'GET',
-        url: `api/Deliverys/${deliveryOption}`,
+        url: `/api/Deliverys/${deliveryOption}`,
         headers: {
             Authorization: `Bearer ${authToken}`
         },
@@ -38,7 +38,7 @@ export const addPaymentMethod = (paymentDetails: PaymentOption, authToken: strin
 export const placeOrder = (addressId: number, deliveryMethodId: number, paymentId: number, basketId: number, authToken: string): Cypress.Chainable<Cypress.Response<any>> => {
     return cy.request({
         method: 'POST',
-        url: `rest/basket/${basketId}/checkout`,
+        url: `/rest/basket/${basketId}/checkout`,
         headers: {
             Authorization: `Bearer ${authToken}`,
         },
