@@ -207,12 +207,6 @@ Suggested next steps for CI/CD:
 * publish Cypress screenshots/videos only on failure
 * publish test results as CI artifacts
 
-## Timebox Note
-
-This assessment was completed under the requested approximate 3-hour timebox. I prioritised a working critical-path checkout scenario, maintainable structure, clear assertions, fixture-based test data, and documentation over exhaustive scenario coverage.
-
-Some areas are intentionally documented as future improvements rather than being fully expanded within the assessment timebox.
-
 ## AI Usage Disclosure
 
 AI assistance was used as a productivity aid during the assessment for:
