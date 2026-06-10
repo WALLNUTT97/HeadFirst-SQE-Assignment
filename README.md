@@ -118,6 +118,8 @@ Open Cypress interactively:
 npm run cypress:open
 ```
 
+From there select E2E testing, your browser of choice, and run the checkout flow
+
 Run Cypress headlessly:
 
 ```bash
